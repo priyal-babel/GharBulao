@@ -1,0 +1,31 @@
+{% extends "users/base.html" %}
+{% load crispy_forms_tags %}
+{% block style %}
+ body{
+     background-color: rgb(10, 60, 66);
+ }
+{% endblock style %}
+
+
+{% block body %}
+<div class="container">
+
+    <div class="jumbotron" style="background-color: rgb(233, 233, 233);">
+
+        <form method='POST'>
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4" style="text-align : center;">Login</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Sign In</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">Not a Member?<a class="ml-2" href="{% url 'register'%}">Register Now!</a></small>
+        </div>
+    </div>
+</div>
+{% endblock body %}
+    
