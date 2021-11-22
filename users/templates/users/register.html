@@ -1,20 +1,50 @@
 {% extends "users/base.html" %}
 {% load crispy_forms_tags %}
+{% load static %}
 {% block style %}
- body{
-     background-color: rgb(10, 60, 66);
- }
+ <link rel="stylesheet" type="text/css" href="{% static 'users/Registerform.css' %}">
 {% endblock style %}
 {% block body %}
 <div class="container">
-<div class="jumbotron" style="background-color: rgb(233, 233, 233);" >
-     <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Maxwell Admin" style="margin-left:35%">
+<div style="background-color: rgb(233, 233, 233);" >
         <form method='POST'>
             {% csrf_token %}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Service Provider Registration</legend>
-                {{ u_form|crispy }}
-                {{p_form|crispy}}
+                <legend class="border-bottom mb-4">Registration</legend>
+                <div class="row">
+                  <div class="col-md-6">
+                     {{u_form.first_name|as_crispy_field}}
+                  </div>
+                    <div class="col-md-6">
+                     {{u_form.last_name|as_crispy_field}}
+                  </div>
+                </div>
+                  <div>{{u_form.username|as_crispy_field}}</div>
+                <div>{{u_form.email|as_crispy_field}}</div>
+                    <div class="row">
+                  <div class="col-md-6">
+                     {{u_form.gender|as_crispy_field}}
+                  </div>
+                    <div class="col-md-6">
+                     {{u_form.birth_date|as_crispy_field}}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                     {{u_form.mobile_no|as_crispy_field}}
+                  </div>
+                    <div class="col-md-6">
+                     {{u_form.city|as_crispy_field}}
+                  </div>
+                </div>
+            <div class="row">
+                  <div class="col-md-6">
+                     {{u_form.password1|as_crispy_field}}
+                  </div>
+                    <div class="col-md-6">
+                     {{u_form.password2|as_crispy_field}}
+                  </div>
+                </div>
             </fieldset>
             <div class="form-group">
                 <button class="btn btn-outline-info" type="submit">Sign Up</button>

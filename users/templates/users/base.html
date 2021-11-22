@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://unpkg.com/flickity@2.0/dist/flickity.min.css">
     <title>GharBulao</title>
-    <style>{% block style %}{% endblock style %}</style>
+    {% block style %}
+    {% endblock style %}
   </head>
   <body>
   <header>
@@ -32,7 +33,7 @@
               <div class="navbar-nav">
                 {% if user.is_authenticated%}
                   <a class="nav-item nav-link" href="#">Profile</a>
-                  <a class="nav-item nav-link" href="#">Logout</a>
+                  <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
                 {% else %}
                   <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
                   <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>

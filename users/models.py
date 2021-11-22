@@ -20,25 +20,25 @@ cities = [
 
 class Profile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
-    profile_Picture = models.ImageField(default='default.png',upload_to='profile_pics')
+    profile_picture = models.ImageField(default='default.png',upload_to='profile_pics')
     gender = models.CharField(max_length=10)
-    mobile_No = models.CharField(max_length=10)
+    mobile_no = models.CharField(max_length=10)
     city = models.CharField(max_length=50, choices=cities, default='Mumbai')
-    birth_Date = models.DateField()   
+    birth_date = models.DateField(null=True)   
 
-    REQUIRED_FIELDS = ['profile_Picture','gender','mobile_No','city','birth_Date']
+    REQUIRED_FIELDS = ['profile_picture','gender','mobile_no','city','birth_date']
 
     def __str__(self):
-        return {self.user.username}
+        return str(self.user.username)
 
-    def save(self):
-        super().save()
-        img = Image.open(self.profile_pic.path)
+    def save(self,*args,**kwargs):
+        super().save(*args,**kwargs)
+        img = Image.open(self.profile_picture.path)
 
         if img.height > 300 or img.width > 300:
             output_size = (300, 300)
             img.thumbnail(output_size)
-            img.save(self.profile_pice.path)
+            img.save(self.profile_picture.path)
 
 
 
