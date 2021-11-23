@@ -21,6 +21,11 @@
                 </div>
                   <div>{{u_form.username|as_crispy_field}}</div>
                 <div>{{u_form.email|as_crispy_field}}</div>
+                <div class="row">
+                  <div class="col-md-12">
+                     {{u_form.bio|as_crispy_field}}
+                  </div>
+                </div>
                     <div class="row">
                   <div class="col-md-6">
                      {{u_form.gender|as_crispy_field}}
@@ -45,6 +50,7 @@
                      {{u_form.password2|as_crispy_field}}
                   </div>
                 </div>
+
             </fieldset>
             <div class="form-group">
                 <button class="btn btn-outline-info" type="submit">Sign Up</button>

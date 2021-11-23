@@ -20,11 +20,36 @@ cities = [
     ('vadodara','Vadodara'),
     ('dehradun','Dehradun'),
     ]
+
+states = [
+    ('delhi','Delhi'),
+    ('mumbai','Mumbai'),
+    ('kolkata','Kolkāta'),
+    ('bangalore','Bangalore'),
+    ('chennai','Chennai'),
+    ('pune','Pune'),
+    ('ahmedabad','Ahmedabad'),
+    ('patna','Patna'),
+    ('hyderabad','Hyderabad'),
+    ('bhuj','Bhuj'),
+    ('vadodara','Vadodara'),
+    ('dehradun','Dehradun'),
+    ]
     
 gender_choice = [
     ('male','Male'),
     ('female','Female'),
     ('other','Other')
+]
+
+amenities = [
+    ('wifi','Wifi'),
+    ('TV','TV'),
+    ('music system','Music System'),
+    ('AC','AC'),
+    ('swimming pool','Swimming Pool'),
+    ('gym','Gym'),
+    ('indoor sports','Indoor Sports')
 ]
 
 class UserRegisterForm(UserCreationForm):
@@ -68,35 +93,54 @@ class UserRegisterForm(UserCreationForm):
         profile.mobile_no = self.cleaned_data.get('mobile_no')
         profile.birth_date = self.cleaned_data.get('birth_date')
         profile.city = self.cleaned_data.get('city')
+        profile.bio = self.cleaned_data.get('bio')
         profile.save()
         return user
 
 class UserUpdateForm(forms.ModelForm):
-    first_name = forms.CharField()
-    last_name = forms.CharField()
-    email = forms.EmailField()
-
     class Meta:
         model = User
         fields = ['first_name','last_name','username','email']
+        widgets = {
+          'first_name': forms.TextInput(attrs={'class': 'input','readonly' : True}),
+          'last_name': forms.TextInput(attrs={'class': 'input','readonly' : True}),
+          'username': forms.TextInput(attrs={'class': 'input'}),
+          'email': forms.EmailInput(attrs={'class': 'input','readonly' : True}),
+        }
 
 class ProfileUpdateForm(forms.ModelForm):
-    profile_picture = forms.ImageField(required=False,label="Profile Picture")
     gender = forms.CharField(max_length=10, widget=forms.Select(choices=gender_choice))
     mobile_no = forms.CharField(max_length=10,label="Mobile No.")
     city = forms.CharField(widget=forms.Select(choices=cities))
+    profile_picture = forms.ImageField()
+    bio = forms.CharField(max_length=1000)
     birth_date = forms.DateField(
     label="Birth Date",
     widget=forms.TextInput(     
-        attrs={'type': 'date'} 
+        attrs={
+        'type': 'date',
+        'readonly':True
+        }
     )
 )
+
     class Meta:
         model = Profile
-        fields = ['gender','mobile_no','city','birth_date']
+        fields = ['bio','gender','mobile_no','city','birth_date','profile_picture']
         widgets = {
-          'gender': forms.TextInput(attrs={'class': 'input'}),
+        #   'gender': forms.TextInput(attrs={'class': 'input'}),
           'mobile_no': forms.TextInput(attrs={'class': 'input'}),
           'city': forms.TextInput(attrs={'class': 'input'}),
           'birth_date': forms.DateInput(attrs={'class': 'input'}),
         }
+
+class PostForm(forms.ModelForm):
+     address = forms.TextInput()
+     city = forms.CharField(widget=forms.Select(choices=cities))
+     state = forms.CharField(widget=forms.Select(choices=states))
+     pincode = forms.IntegerField()
+     Area = forms.DecimalField(max_digits=6,decimal_places=2)
+     amenities = forms.MultipleChoiceField(
+        choices = amenities,
+        widget  = forms.CheckboxSelectMultiple,
+    )

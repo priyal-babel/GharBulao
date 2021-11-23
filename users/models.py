@@ -18,11 +18,27 @@ cities = [
     ('dehradun','Dehradun'),
     ]
 
+states = [
+    ('delhi','Delhi'),
+    ('mumbai','Mumbai'),
+    ('kolkata','Kolkāta'),
+    ('bangalore','Bangalore'),
+    ('chennai','Chennai'),
+    ('pune','Pune'),
+    ('ahmedabad','Ahmedabad'),
+    ('patna','Patna'),
+    ('hyderabad','Hyderabad'),
+    ('bhuj','Bhuj'),
+    ('vadodara','Vadodara'),
+    ('dehradun','Dehradun'),
+    ]
+
 class Profile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
     profile_picture = models.ImageField(default='default.png',upload_to='profile_pics')
     gender = models.CharField(max_length=10)
     mobile_no = models.CharField(max_length=10)
+    bio = models.CharField(max_length=1000)
     city = models.CharField(max_length=50, choices=cities, default='Mumbai')
     birth_date = models.DateField(null=True)   
 
@@ -40,6 +56,21 @@ class Profile(models.Model):
             img.thumbnail(output_size)
             img.save(self.profile_picture.path)
 
+class Post(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE) 
+    address = models.TextField()
+    pincode = models.IntegerField()
+    city = models.CharField(max_length=50, choices=cities, default='Mumbai')
+    state =  models.CharField(max_length=50, choices=states, default='Maharashtra')
+    Area = models.DecimalField(max_digits=6,default=0.0,decimal_places=2)
+    # amenities = 
 
+       
+    
+    
 
+class Image(models.Model):
+    post = models.ForeignKey(Post, default=None,on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='property_pics',
+                              verbose_name='Image')
     
