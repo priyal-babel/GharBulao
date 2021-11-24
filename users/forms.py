@@ -1,9 +1,10 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from django.db.models import fields
 from django.forms import widgets
 from django.utils.regex_helper import Choice
-from .models import Profile
+from .models import Profile,Post, Image
 from django.db import transaction
 
 cities = [
@@ -124,6 +125,7 @@ class ProfileUpdateForm(forms.ModelForm):
     )
 )
 
+
     class Meta:
         model = Profile
         fields = ['bio','gender','mobile_no','city','birth_date','profile_picture']
@@ -135,12 +137,27 @@ class ProfileUpdateForm(forms.ModelForm):
         }
 
 class PostForm(forms.ModelForm):
-     address = forms.TextInput()
-     city = forms.CharField(widget=forms.Select(choices=cities))
-     state = forms.CharField(widget=forms.Select(choices=states))
-     pincode = forms.IntegerField()
-     Area = forms.DecimalField(max_digits=6,decimal_places=2)
-     amenities = forms.MultipleChoiceField(
-        choices = amenities,
-        widget  = forms.CheckboxSelectMultiple,
-    )
+    address = forms.TextInput()
+    city = forms.CharField(widget=forms.Select(choices=cities))
+    state = forms.CharField(widget=forms.Select(choices=states))
+    pincode = forms.IntegerField()
+    Area = forms.DecimalField(max_digits=6,decimal_places=2)
+    amenities = forms.MultipleChoiceField(
+    choices = amenities,
+    widget  = forms.CheckboxSelectMultiple,
+)
+
+    def clean_amenities(self):
+        print("savvvvvvvinggggggggg")
+        data = str(self.cleaned_data['amenities'])
+        return data
+
+    class Meta:
+        model = Post
+        fields = ['amenities','address','city','state','pincode','Area']
+
+# class ImageForm(forms.ModelForm):
+#     image = forms.ImageField(label='Image', required=False)
+#     class Meta:
+#         model = Image
+#         fields = ('image',)

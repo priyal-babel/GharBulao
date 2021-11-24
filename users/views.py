@@ -3,11 +3,12 @@ from django.shortcuts import redirect, render
 # from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.forms import modelformset_factory
+from .models import Image
 
 from users.models import Profile
-from .forms import ProfileUpdateForm, UserRegisterForm, UserUpdateForm
+from .forms import ProfileUpdateForm, UserRegisterForm, UserUpdateForm,PostForm
 
-# Create your views here.
 def register(request):
    if(request.method == 'POST'):
       u_form = UserRegisterForm(request.POST)
@@ -20,9 +21,7 @@ def register(request):
          messages.success(request,f"Username {username}, your account is created successfully. Login to use the available features..")
          return redirect('login')
    else:
-      # this is the default form that django gives us with all basic fileds required for the user to register along with the validation stuff
       u_form = UserRegisterForm()
-      # p_form = ProfileUpdateForm()
    return render(request,'users/register.html',{'u_form' : u_form})
 
 @login_required
@@ -47,3 +46,26 @@ def profileUpdate(request):
 
 def home(request):
    return render(request,'users/home.html')
+
+@login_required
+def posts(request):
+   
+   if request.method == 'POST':
+      pform = PostForm(request.POST)
+      images = request.FILES.getlist('image')
+
+      if pform.is_valid():
+         pst = pform.save(commit=False)
+         pst.user = request.user
+         pst.save()
+         for img in images:
+            Image.objects.create(post=pst, image=img)
+         
+         messages.success(request, f'Your post has been updated.')
+         return redirect('post')
+   else:
+      form = PostForm()
+      context = {
+			'form': form,
+		}
+   return render(request,'users/post.html',context)

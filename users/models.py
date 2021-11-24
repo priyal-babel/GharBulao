@@ -59,18 +59,19 @@ class Profile(models.Model):
 class Post(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE) 
     address = models.TextField()
-    pincode = models.IntegerField()
+    pincode = models.IntegerField(null=True)
     city = models.CharField(max_length=50, choices=cities, default='Mumbai')
     state =  models.CharField(max_length=50, choices=states, default='Maharashtra')
     Area = models.DecimalField(max_digits=6,default=0.0,decimal_places=2)
-    # amenities = 
-
+    amenities = models.CharField(max_length=500,default='[]')
+    timestamp = models.DateTimeField(auto_now=True)
        
-    
-    
+    def __str__(self):
+        return str(self.user.username)
 
 class Image(models.Model):
     post = models.ForeignKey(Post, default=None,on_delete=models.CASCADE)
     image = models.ImageField(upload_to='property_pics',
                               verbose_name='Image')
-    
+    def __str__(self):
+        return str(self.post)
