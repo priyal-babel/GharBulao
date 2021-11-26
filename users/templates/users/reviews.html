@@ -8,7 +8,7 @@
 <br />
 <div class="container">
   <div class="jumbotron" style="background-color: rgb(233, 233, 233)">
-    <form method="POST" action="" id="post_form">
+    <form method="POST" action='' id="post_form">
       {% csrf_token %}
       <fieldset class="form-group">
         <legend class="border-bottom mb-4" style="text-align: center">
@@ -37,7 +37,7 @@
       <div class="form-group">
         <button class="btn btn-outline-info" type="submit">Add Review</button>
       </div>
-    </form>
+    {% comment %} </form> {% endcomment %}
   </div>
 </div>
 
@@ -49,6 +49,7 @@ data = $(this).data('value')
 });
 
 $(document).on('submit',function(e){
+  console.log("REVIEWWWWWW",$('#review').val() )
     $.ajax({
         type:'POST',
         url:'{% url "review" %}',
@@ -60,7 +61,15 @@ $(document).on('submit',function(e){
         },
         success:function(json){
             console.log("done!!");
-            document.getElementById("post-form").reset();
+             Swal.fire(
+                  {
+                    icon: 'success',
+                    title: 'Thank you!',
+                    text: 'Your review has been submitted successfully...',
+                    confirmButtonText: 'OK',
+                  }
+                )
+            window.location.href = "http://localhost:8000/showPost/11";
         },
         error : function(xhr,errmsg,err) {
         console.log(xhr.status + ": " + xhr.responseText);

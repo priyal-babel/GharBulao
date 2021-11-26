@@ -78,19 +78,23 @@ def review(request):
       review = request.POST.get('review')
       rating = request.POST.get('rating')
       post = Post.objects.get(id=11)
-      print("REVIEWWWWWWWWW",request.POST.get('review'))
-      print("DATAAA",request.POST.get('rating'))
-      Reviews.objects.create(
-         review = review,
-         rating = rating,
-         user = request.user,
-         post = post,
-         )
-      print("hhhhheeeeeeeeeeeeeellllllllllllllllllllllooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo")
-      messages.success(request, f'Your review has been posted successfully.')
-      return redirect('post')
-
+      print("REVIEWWWWWWWWW",review)
+      print("DATAAA",rating)
+      # Reviews.objects.create(
+      #    review = review,
+      #    rating = rating,
+      #    user = request.user,
+      #    post = post,
+      #    )
+      print("HELLOOOOOOO")
+      return HttpResponse('<html></html>')
    return render(request,'users/reviews.html')
+
+def showPost(request,pk):
+   return render(request,'users/showPost.html')
+
+def postList(request):
+   return render(request,'users/postList.html')
 
 # def getdata(request):
 #    p = Post.objects.all()
