@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from PIL import Image
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
 cities = [
@@ -65,6 +66,8 @@ class Post(models.Model):
     Area = models.DecimalField(max_digits=6,default=0.0,decimal_places=2)
     amenities = models.CharField(max_length=500,default='[]')
     timestamp = models.DateTimeField(auto_now=True)
+    desc = models.TextField(max_length=500,default='')
+    name = models.CharField(max_length=100, default='')
        
     def __str__(self):
         return str(self.user.username)
@@ -75,3 +78,18 @@ class Image(models.Model):
                               verbose_name='Image')
     def __str__(self):
         return str(self.post)
+
+
+class Reviews(models.Model):
+    post = models.ForeignKey(Post, default=None,on_delete=models.CASCADE)
+    user = models.OneToOneField(User,on_delete=models.CASCADE) 
+    review = models.TextField(max_length=500,default='',null=True)
+    rating = models.IntegerField(default=1,
+        validators=[
+            MaxValueValidator(5),
+            MinValueValidator(1)
+        ])
+    review_posted = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return str(self.user.username)

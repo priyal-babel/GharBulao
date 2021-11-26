@@ -1,10 +1,10 @@
 from django.contrib.auth import login
+from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
 # from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.forms import modelformset_factory
-from .models import Image
+from .models import Image, Post, Reviews
 
 from users.models import Profile
 from .forms import ProfileUpdateForm, UserRegisterForm, UserUpdateForm,PostForm
@@ -58,6 +58,7 @@ def posts(request):
          pst = pform.save(commit=False)
          pst.user = request.user
          pst.save()
+         print("POSTTTTTTTTTTTTT",pst.post_id)
          for img in images:
             Image.objects.create(post=pst, image=img)
          
@@ -69,3 +70,31 @@ def posts(request):
 			'form': form,
 		}
    return render(request,'users/post.html',context)
+
+
+@login_required
+def review(request):
+   if request.POST.get('action') == '':
+      review = request.POST.get('review')
+      rating = request.POST.get('rating')
+      post = Post.objects.get(id=11)
+      print("REVIEWWWWWWWWW",request.POST.get('review'))
+      print("DATAAA",request.POST.get('rating'))
+      Reviews.objects.create(
+         review = review,
+         rating = rating,
+         user = request.user,
+         post = post,
+         )
+      print("hhhhheeeeeeeeeeeeeellllllllllllllllllllllooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo")
+      messages.success(request, f'Your review has been posted successfully.')
+      return redirect('post')
+
+   return render(request,'users/reviews.html')
+
+# def getdata(request):
+#    p = Post.objects.all()
+#    print(p[0].id, p[0].city, p[0].address)
+#    html = f"<html><body>Data: {p[0].id}</body></html>"
+#    return HttpResponse(html)
+   

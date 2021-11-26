@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.db.models import fields
 from django.forms import widgets
 from django.utils.regex_helper import Choice
-from .models import Profile,Post, Image
+from .models import Profile,Post, Reviews
 from django.db import transaction
 
 cities = [
@@ -137,27 +137,34 @@ class ProfileUpdateForm(forms.ModelForm):
         }
 
 class PostForm(forms.ModelForm):
-    address = forms.TextInput()
     city = forms.CharField(widget=forms.Select(choices=cities))
     state = forms.CharField(widget=forms.Select(choices=states))
-    pincode = forms.IntegerField()
     Area = forms.DecimalField(max_digits=6,decimal_places=2)
     amenities = forms.MultipleChoiceField(
     choices = amenities,
     widget  = forms.CheckboxSelectMultiple,
-)
 
+    )
+    name = forms.CharField()
+    
     def clean_amenities(self):
-        print("savvvvvvvinggggggggg")
         data = str(self.cleaned_data['amenities'])
         return data
 
     class Meta:
         model = Post
-        fields = ['amenities','address','city','state','pincode','Area']
+        fields = ['name','desc','amenities','address','city','state','pincode','Area']
+        widgets = {
+          'desc': forms.Textarea(attrs={'rows': 4, 'cols':15,'style':'resize:none;'}),
+          'address': forms.Textarea(attrs={'rows': 4, 'cols':15,'style':'resize:none;'}),
+        }
 
-# class ImageForm(forms.ModelForm):
-#     image = forms.ImageField(label='Image', required=False)
-#     class Meta:
-#         model = Image
-#         fields = ('image',)
+# class ReviewForm(forms.ModelForm):
+#         widgets = {'note': forms.NumberInput(attrs={'class': 'Stars'})}
+#         class Meta:
+#             model = Reviews
+#             fields = ['review','rating']
+#             widgets = {
+#               'review': forms.Textarea(attrs={'rows': 4, 'cols':15,'style':'resize:none;'}),
+#             }
+        
