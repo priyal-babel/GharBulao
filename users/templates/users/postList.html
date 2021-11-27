@@ -1,13 +1,77 @@
 {% extends "users/base.html" %}
 {% load crispy_forms_tags %}
+{% load static %}
 {% block style %}
+  <link rel="stylesheet" type="text/css" href="{% static 'users/PostList.css' %}"
 {% endblock style %}
 
-
 {% block body %}
-<div class="container">
 
-    <a>Helloooooooooooooo</a>
+<br>
+
+<div class="main">
+  <div class="left">
+  <div class="form_left">
+    <form method='POST'>
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4" style="text-align : center;">List of different properties to live in!!</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Search</button>
+            </div>
+        </form>
+     </div>
+    <br>
+    <h6 class="left_head text-left">Top Rated Properties : </h6>
+    {% for p in posts %}
+<div class="card left_card">
+        {% comment %} <div class="row no-gutters"> {% endcomment %}
+            {% comment %} <div class="col-auto"> {% endcomment %}
+                <img src="/media/{{p.image}}" class="img-fluid left_img" alt="">
+            {% comment %} </div> {% endcomment %}
+            {% comment %} <div class="col"> {% endcomment %}
+                <div class="card-block px-2">
+                <div class="persuasion__item pc__entireProperty">
+                <div class="pc__html">ROOM IN HOUSE <span>{{p.post.Area}} SQ.FT</span></div>
+                </div>
+                    <h6 class="card-title">{{p.post.name}}</h6>
+                    <p class="card-text">{{p.post.desc}}</p>
+                    {% comment %} <a href="#" class="btn btn-primary">Explore!!</a> {% endcomment %}
+                </div>
+            {% comment %} </div> {% endcomment %}
+        {% comment %} </div> {% endcomment %}
+  </div>
+  {% endfor %}
+  </div>
+<div class="right">
+    <div class="container d-flex flex-row-reverse justify-content-center cont">
+{% if posts %}
+{% for p in posts %}
+<div class="card custom-c">
+        <div class="row no-gutters">
+            <div class="col-auto">
+                <img src="/media/{{p.image}}" class="img-fluid custom-img" alt="">
+            </div>
+            <div class="col">
+                <div class="card-block px-2">
+                <div class="persuasion__item pc__entireProperty">
+                <div class="pc__html">ROOM IN HOUSE <span>{{p.post.Area}} SQ.FT</span></div>
+                </div>
+                    <h4 class="card-title">{{p.post.name}}</h4>
+                    <p class="card-text">{{p.post.desc}}</p>
+                    <a href="http://localhost:8000/showPost/{{p.post.id}}" class="btn btn-primary">Explore!!</a>
+                </div>
+            </div>
+        </div>
+  </div>
+  {% endfor %}
+  {% else %}
+    <h5 class="right_head">Sorry, currently no properties are available for this location.</h5>
+  {% endif %}
+  </div>
+  </div>
 </div>
 {% endblock body %}
     
