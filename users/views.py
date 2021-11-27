@@ -4,10 +4,11 @@ from django.shortcuts import redirect, render
 # from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import Image, Post, Reviews
+from .models import Img, Post, Reviews
+from django.db.models import Avg
 
 from users.models import Profile
-from .forms import ProfileUpdateForm, UserRegisterForm, UserUpdateForm,PostForm
+from .forms import ProfileUpdateForm, UserRegisterForm, UserUpdateForm,PostForm, searchForm
 
 def register(request):
    if(request.method == 'POST'):
@@ -58,9 +59,8 @@ def posts(request):
          pst = pform.save(commit=False)
          pst.user = request.user
          pst.save()
-         print("POSTTTTTTTTTTTTT",pst.post_id)
          for img in images:
-            Image.objects.create(post=pst, image=img)
+            Img.objects.create(post=pst, image=img)
          
          messages.success(request, f'Your post has been updated.')
          return redirect('post')
@@ -77,24 +77,39 @@ def review(request):
    if request.POST.get('action') == '':
       review = request.POST.get('review')
       rating = request.POST.get('rating')
-      post = Post.objects.get(id=11)
-      print("REVIEWWWWWWWWW",review)
-      print("DATAAA",rating)
-      # Reviews.objects.create(
-      #    review = review,
-      #    rating = rating,
-      #    user = request.user,
-      #    post = post,
-      #    )
-      print("HELLOOOOOOO")
+      post = Post.objects.get(id=11)  #TODO
+      Reviews.objects.create(
+         review = review,
+         rating = rating,
+         user = request.user,
+         post = post,
+         )
       return HttpResponse('<html></html>')
    return render(request,'users/reviews.html')
 
+
+@login_required
 def showPost(request,pk):
    return render(request,'users/showPost.html')
 
+@login_required
 def postList(request):
-   return render(request,'users/postList.html')
+
+   form = searchForm()
+   if request.method == 'POST':
+      form = searchForm(request.POST)
+      if form.is_valid():
+         # post = Post.objects.filter(city__contains=form.cleaned_data.get('search'))
+         posts = Img.objects.filter(post__city__contains = form.cleaned_data.get('search'))
+   else:
+      posts = Img.objects.all()
+      review_post = Post.objects.annotate(avg_rating=Avg('reviews__rating')).order_by('avg_rating')
+      print("LALALALLA",review_post)
+      # for post in review_post:
+      #    rating = Reviews.objects.filter(post=post)
+
+
+   return render(request,'users/postList.html',{'posts' : posts, 'form': form})
 
 # def getdata(request):
 #    p = Post.objects.all()

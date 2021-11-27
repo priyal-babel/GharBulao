@@ -37,7 +37,7 @@
       <div class="form-group">
         <button class="btn btn-outline-info" type="submit">Add Review</button>
       </div>
-    {% comment %} </form> {% endcomment %}
+    </form>
   </div>
 </div>
 
@@ -49,7 +49,6 @@ data = $(this).data('value')
 });
 
 $(document).on('submit',function(e){
-  console.log("REVIEWWWWWW",$('#review').val() )
     $.ajax({
         type:'POST',
         url:'{% url "review" %}',
@@ -61,14 +60,7 @@ $(document).on('submit',function(e){
         },
         success:function(json){
             console.log("done!!");
-             Swal.fire(
-                  {
-                    icon: 'success',
-                    title: 'Thank you!',
-                    text: 'Your review has been submitted successfully...',
-                    confirmButtonText: 'OK',
-                  }
-                )
+            window.alert("Your review has been posted successfully!!");
             window.location.href = "http://localhost:8000/showPost/11";
         },
         error : function(xhr,errmsg,err) {

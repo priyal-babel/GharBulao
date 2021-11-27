@@ -58,6 +58,7 @@ class UserRegisterForm(UserCreationForm):
     gender = forms.CharField(max_length=10, widget=forms.Select(choices=gender_choice))
     mobile_no = forms.CharField(max_length=10,label="Mobile No.")
     city = forms.CharField(widget=forms.Select(choices=cities))
+    bio = forms.CharField()
     birth_date = forms.DateField(
     label="Birth Date",
     widget=forms.TextInput(     
@@ -69,7 +70,7 @@ class UserRegisterForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['first_name','last_name','username','email','password1','password2','gender','mobile_no','city','birth_date']
+        fields = ['first_name','last_name','username','email','password1','password2','bio','gender','mobile_no','city','birth_date']
         widgets = {
           'first_name': forms.TextInput(attrs={'class': 'input'}),
           'last_name': forms.TextInput(attrs={'class': 'input'}),
@@ -158,6 +159,14 @@ class PostForm(forms.ModelForm):
           'desc': forms.Textarea(attrs={'rows': 4, 'cols':15,'style':'resize:none;'}),
           'address': forms.Textarea(attrs={'rows': 4, 'cols':15,'style':'resize:none;'}),
         }
+
+class searchForm(forms.Form):
+    search = forms.CharField(widget=forms.Select(choices=cities))
+
+    class Meta:
+        fields = ['search']
+
+
 
 # class ReviewForm(forms.ModelForm):
 #         widgets = {'note': forms.NumberInput(attrs={'class': 'Stars'})}

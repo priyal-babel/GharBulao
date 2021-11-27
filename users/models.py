@@ -72,7 +72,7 @@ class Post(models.Model):
     def __str__(self):
         return str(self.user.username)
 
-class Image(models.Model):
+class Img(models.Model):
     post = models.ForeignKey(Post, default=None,on_delete=models.CASCADE)
     image = models.ImageField(upload_to='property_pics',
                               verbose_name='Image')
@@ -80,7 +80,7 @@ class Image(models.Model):
         return str(self.post)
 
 
-class Reviews(models.Model):
+class Reviews(models.Model): # TODO Constraint one user one person
     post = models.ForeignKey(Post, default=None,on_delete=models.CASCADE)
     user = models.OneToOneField(User,on_delete=models.CASCADE) 
     review = models.TextField(max_length=500,default='',null=True)
