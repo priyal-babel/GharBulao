@@ -1,11 +1,12 @@
 from django.contrib.auth import login
-from django.http.response import HttpResponse
+from django.http.response import HttpResponse, HttpResponseNotFound
 from django.shortcuts import redirect, render
 # from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Img, Post, Reviews
 from django.db.models import Avg
+from django.core.exceptions import PermissionDenied
 
 from users.models import Profile
 from .forms import ProfileUpdateForm, UserRegisterForm, UserUpdateForm,PostForm, searchForm
@@ -71,45 +72,44 @@ def posts(request):
 		}
    return render(request,'users/post.html',context)
 
-
 @login_required
-def review(request):
+def showPost(request,pk):
+   post = Post.objects.get(id=pk) 
    if request.POST.get('action') == '':
       review = request.POST.get('review')
       rating = request.POST.get('rating')
-      post = Post.objects.get(id=11)  #TODO
-      Reviews.objects.create(
-         review = review,
-         rating = rating,
-         user = request.user,
-         post = post,
-         )
-      return HttpResponse('<html></html>')
-   return render(request,'users/reviews.html')
-
-
-@login_required
-def showPost(request,pk):
-   return render(request,'users/showPost.html')
+      reviews  = Reviews.objects.filter(user=request.user,post=post)
+      if reviews:
+         return HttpResponseNotFound('error message')
+      else:
+         Reviews.objects.create(
+            review = review,
+            rating = rating,
+            user = request.user,
+            post = post,
+            )
+         return HttpResponse('<html></html>')
+   return render(request,'users/showPost.html',context={'post':post})
 
 @login_required
 def postList(request):
-
+   review_post = Post.objects.annotate(avg_rating=Avg('reviews__rating')).order_by('-avg_rating')[:4]
    form = searchForm()
    if request.method == 'POST':
       form = searchForm(request.POST)
       if form.is_valid():
          # post = Post.objects.filter(city__contains=form.cleaned_data.get('search'))
-         posts = Img.objects.filter(post__city__contains = form.cleaned_data.get('search'))
+         p = Img.objects.filter(post__city__contains = form.cleaned_data.get('search'))
    else:
-      posts = Img.objects.all()
-      review_post = Post.objects.annotate(avg_rating=Avg('reviews__rating')).order_by('avg_rating')
-      print("LALALALLA",review_post)
-      # for post in review_post:
-      #    rating = Reviews.objects.filter(post=post)
+      p = Img.objects.all()
 
+   posts = {}
+   for post in p:
+      if post.post.id not in posts:
+         posts[post.post.id] = []
+      posts[post.post.id].append(post)
 
-   return render(request,'users/postList.html',{'posts' : posts, 'form': form})
+   return render(request,'users/postList.html',{'posts' : posts, 'form': form, 'reviews':review_post})
 
 # def getdata(request):
 #    p = Post.objects.all()

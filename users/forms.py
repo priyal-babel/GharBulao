@@ -10,7 +10,10 @@ from django.db import transaction
 cities = [
     ('delhi','Delhi'),
     ('mumbai','Mumbai'),
-    ('kolkata','Kolkāta'),
+    ('kolkata','Kolkata'),
+    ('nainaital','Nainital'),
+    ('goa','Goa'),
+    ('lonavala','Lonavala'),
     ('bangalore','Bangalore'),
     ('chennai','Chennai'),
     ('pune','Pune'),
@@ -21,22 +24,8 @@ cities = [
     ('vadodara','Vadodara'),
     ('dehradun','Dehradun'),
     ]
-
-states = [
-    ('delhi','Delhi'),
-    ('mumbai','Mumbai'),
-    ('kolkata','Kolkāta'),
-    ('bangalore','Bangalore'),
-    ('chennai','Chennai'),
-    ('pune','Pune'),
-    ('ahmedabad','Ahmedabad'),
-    ('patna','Patna'),
-    ('hyderabad','Hyderabad'),
-    ('bhuj','Bhuj'),
-    ('vadodara','Vadodara'),
-    ('dehradun','Dehradun'),
-    ]
-    
+cities.sort()
+states = [('andhra pradesh', 'Andhra Pradesh'), ('arunachal pradesh', 'Arunachal Pradesh'), ('assam', 'Assam'), ('bihar ', 'Bihar '), ('chhattisgarh', 'Chhattisgarh'), ('goa', 'Goa'), ('gujarat', 'Gujarat'), ('haryana', 'Haryana'), ('himachal pradesh', 'Himachal Pradesh'), ('jharkhand', 'Jharkhand'), ('karnataka', 'Karnataka'), ('kerala', 'Kerala'), ('madhya pradesh', 'Madhya Pradesh'), ('maharashtra', 'Maharashtra'), ('manipur', 'Manipur'), ('meghalaya', 'Meghalaya'), ('mizoram', 'Mizoram'), ('nagaland', 'Nagaland'), ('odisha', 'Odisha'), ('punjab', 'Punjab'), ('rajasthan', 'Rajasthan'), ('sikkim', 'Sikkim'), ('tamil nadu', 'Tamil Nadu'), ('telangana ', 'Telangana '), ('tripura', 'Tripura'), ('uttarakhand', 'Uttarakhand'), ('uttar pradesh ', 'Uttar Pradesh ')]    
 gender_choice = [
     ('male','Male'),
     ('female','Female'),
@@ -165,6 +154,9 @@ class searchForm(forms.Form):
 
     class Meta:
         fields = ['search']
+        widgets = {
+            'search' : forms.Textarea(attrs={'style' : 'flex:1;'})
+        }
 
 
 

@@ -9,7 +9,6 @@ urlpatterns = [
     path('profile/',views.profileUpdate,name='profile'),
     path('post/',views.posts,name='post'),
     path('postList/',views.postList,name='postList'),
-    path('showPost/review',views.review,name='review'),
     path('showPost/<int:pk>',views.showPost,name='showPost'),
     #  path('data/',views.getdata,name='data'),
     path('login/',auth_views.LoginView.as_view(template_name='users/login.html'),name='login'),
