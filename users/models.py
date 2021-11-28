@@ -7,7 +7,10 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 cities = [
     ('delhi','Delhi'),
     ('mumbai','Mumbai'),
-    ('kolkata','Kolkāta'),
+    ('kolkata','Kolkata'),
+    ('nainaital','Nainital'),
+    ('goa','Goa'),
+    ('lonavala','Lonavala'),
     ('bangalore','Bangalore'),
     ('chennai','Chennai'),
     ('pune','Pune'),
@@ -18,21 +21,8 @@ cities = [
     ('vadodara','Vadodara'),
     ('dehradun','Dehradun'),
     ]
-
-states = [
-    ('delhi','Delhi'),
-    ('mumbai','Mumbai'),
-    ('kolkata','Kolkāta'),
-    ('bangalore','Bangalore'),
-    ('chennai','Chennai'),
-    ('pune','Pune'),
-    ('ahmedabad','Ahmedabad'),
-    ('patna','Patna'),
-    ('hyderabad','Hyderabad'),
-    ('bhuj','Bhuj'),
-    ('vadodara','Vadodara'),
-    ('dehradun','Dehradun'),
-    ]
+cities.sort()
+states = [('andhra pradesh', 'Andhra Pradesh'), ('arunachal pradesh', 'Arunachal Pradesh'), ('assam', 'Assam'), ('bihar ', 'Bihar '), ('chhattisgarh', 'Chhattisgarh'), ('goa', 'Goa'), ('gujarat', 'Gujarat'), ('haryana', 'Haryana'), ('himachal pradesh', 'Himachal Pradesh'), ('jharkhand', 'Jharkhand'), ('karnataka', 'Karnataka'), ('kerala', 'Kerala'), ('madhya pradesh', 'Madhya Pradesh'), ('maharashtra', 'Maharashtra'), ('manipur', 'Manipur'), ('meghalaya', 'Meghalaya'), ('mizoram', 'Mizoram'), ('nagaland', 'Nagaland'), ('odisha', 'Odisha'), ('punjab', 'Punjab'), ('rajasthan', 'Rajasthan'), ('sikkim', 'Sikkim'), ('tamil nadu', 'Tamil Nadu'), ('telangana ', 'Telangana '), ('tripura', 'Tripura'), ('uttarakhand', 'Uttarakhand'), ('uttar pradesh ', 'Uttar Pradesh ')]
 
 class Profile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
@@ -80,9 +70,9 @@ class Img(models.Model):
         return str(self.post)
 
 
-class Reviews(models.Model): # TODO Constraint one user one person
+class Reviews(models.Model):
     post = models.ForeignKey(Post, default=None,on_delete=models.CASCADE)
-    user = models.OneToOneField(User,on_delete=models.CASCADE) 
+    user = models.ForeignKey(User,on_delete=models.CASCADE) 
     review = models.TextField(max_length=500,default='',null=True)
     rating = models.IntegerField(default=1,
         validators=[
@@ -93,3 +83,5 @@ class Reviews(models.Model): # TODO Constraint one user one person
 
     def __str__(self):
         return str(self.user.username)
+
+        # https://stackoverflow.com/questions/62023710/django-how-to-restrict-a-user-to-put-review-only-once
