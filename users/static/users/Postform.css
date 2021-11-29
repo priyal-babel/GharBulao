@@ -1,0 +1,17 @@
+.post_form{
+    height:90vh;
+    width:95vw;
+    /* overflow-x: hidden; */
+    display: flex;
+    justify-content: center;
+}
+
+.post_head{
+    color: #eae7d6;
+    font-style:italic;
+    font-weight: 400;
+}
+
+.cus {
+    margin-bottom: 10;
+}

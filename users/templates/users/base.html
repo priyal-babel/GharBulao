@@ -1,3 +1,5 @@
+{% load static %}
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -10,13 +12,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://unpkg.com/flickity@2.0/dist/flickity.min.css">
     <title>GharBulao</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'users/Navbar.css' %}">
     {% block style %}
     {% endblock style %}
   </head>
   <body>
   <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">GharBulao.com</a>
+        <nav class="navbar navbar-expand-lg navbar-fixed-top custom-navbar">
+            <a class="navbar-brand" href="#">
+    <img class="img" src="/media/logo.png" width=60 alt="">
+  </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -28,6 +33,12 @@
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'postList' %}">Book Property</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'post' %}">Add Property</a>
                 </li>
               </ul>
               <div class="navbar-nav">
@@ -42,6 +53,9 @@
             </div>
           </nav>
       </header>
+      <br>
+      <br>
+      <br>
        <div class="col-md-8">
 	      {% if messages %}
 	      	{% for message in messages %}

@@ -1,0 +1,29 @@
+.login{
+    height: 90vh;
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mycont{
+    background-color: #092230;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.requiredField{
+    color: #eae7d6;
+    outline: none !important;
+}
+
+.head{
+    color:#eae7d6;
+    font-weight: 400;
+    font-style: italic;
+}
+
+
+.bottom_link{
+    color: #fcf5cc;
+}

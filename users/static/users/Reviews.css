@@ -27,7 +27,7 @@
 		.rating a:hover ~ a,
 		.rating a:focus,
 		.rating a:focus ~ a		{
-			color: orange;
+			color: #092230;
 			cursor: pointer;
 		}
 		.rating2 {

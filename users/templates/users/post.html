@@ -1,15 +1,24 @@
-{% extends "users/base.html" %} {% load static %} {% load crispy_forms_tags %}
+{% extends "users/base.html" %} 
+{% load static %} 
+{% load crispy_forms_tags %}
+{% block style %}
+ <link rel="stylesheet" type="text/css" href="{% static 'users/Postform.css' %}">
+ <style>
+  .post-form{
+    color: #eae7d6;
+  }
+ </style>
+{% endblock style %}
 {% block content %}
 <br />
-<br />
-<br />
+<div class="post_form cus">
 <div class="container">
-  <div class="jumbotron" style="background-color: rgb(233, 233, 233)">
-    <form method="POST" enctype="multipart/form-data">
+  <div class="jumbotron" style="background-color: #092230;margin-bottom:10px;">
+    <form method="POST" enctype="multipart/form-data" class="post-form">
       {% csrf_token %}
       <fieldset class="form-group">
-        <legend class="border-bottom mb-4" style="text-align: center">
-          Login
+        <legend class="mb-4 post_head" style="text-align: center">
+          Post Your Property
         </legend>
         {{ form|crispy }}
         {% comment %} {{ imgform|crispy }} {% endcomment %}
@@ -17,16 +26,11 @@
         <input type="file" name="image" accept="image/*" multiple class="form-control">
       </fieldset>
       <div class="form-group">
-        <button class="btn btn-outline-info" type="submit">Sign In</button>
+        <button class="btn btn-outline-info" type="submit">Add Post</button>
       </div>
     </form>
-    <div class="border-top pt-3">
-      <small class="text-muted"
-        >Not a Member?<a class="ml-2" href="{% url 'register'%}"
-          >Register Now!</a>
-          </small>
-    </div>
   </div>
+</div>
 </div>
 
 {% endblock content %}

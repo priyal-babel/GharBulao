@@ -1,0 +1,21 @@
+:root {
+    --blue: #092230;
+    --off_white: #eae7d6;
+}
+
+.custom-navbar{
+    background-color: var(--blue);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.navbar a {
+    color: var(--off_white);
+}
+
+.img {
+    opacity: 1;
+    /* aspect-ratio:1; */
+}

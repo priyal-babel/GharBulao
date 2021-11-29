@@ -43,7 +43,7 @@ amenities = [
 ]
 
 class UserRegisterForm(UserCreationForm):
-    # first_name 
+    first_name = forms.CharField()
     gender = forms.CharField(max_length=10, widget=forms.Select(choices=gender_choice))
     mobile_no = forms.CharField(max_length=10,label="Mobile No.")
     city = forms.CharField(widget=forms.Select(choices=cities))
@@ -61,7 +61,8 @@ class UserRegisterForm(UserCreationForm):
         model = User
         fields = ['first_name','last_name','username','email','password1','password2','bio','gender','mobile_no','city','birth_date']
         widgets = {
-          'first_name': forms.TextInput(attrs={'class': 'input'}),
+            # 'username' : forms.TextInput(attrs={'class': 'input','style':'color:#eae7d6;'}),
+          'first_name': forms.TextInput(attrs={'class': 'input','style':'color:#eae7d6;'}),
           'last_name': forms.TextInput(attrs={'class': 'input'}),
           'email': forms.EmailInput(attrs={'class': 'input'}),
           'gender': forms.TextInput(attrs={'class': 'input'}),

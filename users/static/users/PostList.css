@@ -52,7 +52,7 @@
 }
 
 .cont{
-    width:90%;
+    width:100%;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -78,7 +78,7 @@
 }
 
 .custom-c{
-    width: 90%;
+    width: 100%;
     height:auto;
 }
 .pc__entireProperty {

@@ -1,0 +1,22 @@
+.input {
+    outline: none !important;
+    /* color: chocolate; */
+}
+
+.frm{
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin: 20px;
+    background-color: #092230;
+}
+
+.bottom_link{
+    color: #eae7d6;
+}
+
+.register_head{
+    color: #eae7d6;
+    font-style : italic;
+    font-weight : 400;
+    text-align: center;
+}
