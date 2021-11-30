@@ -93,15 +93,24 @@ def showPost(request,pk):
 
 @login_required
 def postList(request):
-   review_post = Post.objects.annotate(avg_rating=Avg('reviews__rating')).order_by('-avg_rating')[:4]
+   r_post = Post.objects.annotate(avg_rating=Avg('reviews__rating')).order_by('-avg_rating')[:4]
+   review_post = []
+   for r in r_post:
+      x = [Img.objects.select_related().filter(post=r)]
+      x.append(r.avg_rating)
+      review_post.append(x)
+   print(review_post)
    form = searchForm()
    if request.method == 'POST':
       form = searchForm(request.POST)
       if form.is_valid():
          # post = Post.objects.filter(city__contains=form.cleaned_data.get('search'))
-         p = Img.objects.filter(post__city__contains = form.cleaned_data.get('search'))
+         if not form.cleaned_data.get('search') == 'None':
+           p = Img.objects.filter(post__city__contains = form.cleaned_data.get('search'))
+         else:
+           p = Img.objects.all()
    else:
-      p = Img.objects.all()
+      p = Img.objects.all().order_by('-post__timestamp')
 
    posts = {}
    for post in p:
@@ -110,6 +119,13 @@ def postList(request):
       posts[post.post.id].append(post)
 
    return render(request,'users/postList.html',{'posts' : posts, 'form': form, 'reviews':review_post})
+
+
+def about(request):
+   return render(request,'users/about.html')
+
+def contact(request):
+   return render(request,'users/contact.html')
 
 # def getdata(request):
 #    p = Post.objects.all()

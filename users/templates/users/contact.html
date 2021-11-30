@@ -1,0 +1,50 @@
+{% extends "users/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block style %}
+  <link rel="stylesheet" type="text/css" href="{% static 'users/Contact.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'users/style.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'users/utils.css'%}">
+{% endblock style %}
+
+{% block body %}
+
+<!-- line -->
+    <div class="max-width1 m-auto">
+        <hr>
+    </div>
+
+
+    <!-- Conatact Content -->
+    <div class="contact-content m-y m-auto max-width1">
+
+        <!-- Heading -->
+        <h2 class="max-width1 m-y">Feel Free to Contact Us</h2>
+
+        <!-- Contact Form -->
+        <div class="contact-form max-width1">
+
+            <div class="form-box">
+                <input type="text" placeholder="Enter your name">
+            </div>
+
+            <div class="form-box">
+                <input type="text" placeholder="Enter your Phone Number">
+            </div>
+
+            <div class="form-box">
+                <input type="text" placeholder="Enter your Email">
+            </div>
+
+            <div class="form-box">
+                <textarea name="" id="" cols="30" rows="10" placeholder="Do let us know incase of any suggestions?"></textarea>
+            </div>
+
+            <div class="form-box">
+                <button class="btn">Submit</button>
+            </div>
+
+        </div>
+    </div>
+{% endblock body %}
+    

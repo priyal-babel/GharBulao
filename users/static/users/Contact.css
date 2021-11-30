@@ -1,0 +1,47 @@
+/* Contact Content Section */
+
+.contact-content {
+    height: 75rem;
+    background-color: var(--color-option);
+    /* border: 5rem solid darkblue; */
+    display: flex;
+    font-family: var(--font1);
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 3rem;
+}
+
+
+/* .contact-content::before {
+    content: '';
+    position: absolute;
+    background: url('../Images/3.jpg');
+    width: inherit;
+    height: inherit;
+    opacity: 0.3;
+    z-index: -1;
+    border-radius: 2rem;
+} */
+
+.contact-content h2 {
+    text-align: center;
+    font-size: 3.5rem;
+}
+
+.contact-form {
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-box input,
+textarea {
+    width: 70rem;
+    padding: .3rem 1rem;
+    border: .3rem solid black;
+    margin: 1rem 0rem;
+    border-radius: .7rem;
+    font-family: var(--font1);
+    font-size: 2rem;
+}

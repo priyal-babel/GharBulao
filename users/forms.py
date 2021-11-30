@@ -11,7 +11,7 @@ cities = [
     ('delhi','Delhi'),
     ('mumbai','Mumbai'),
     ('kolkata','Kolkata'),
-    ('nainaital','Nainital'),
+    ('nainital','Nainital'),
     ('goa','Goa'),
     ('lonavala','Lonavala'),
     ('bangalore','Bangalore'),
@@ -23,6 +23,7 @@ cities = [
     ('bhuj','Bhuj'),
     ('vadodara','Vadodara'),
     ('dehradun','Dehradun'),
+    ('None','None')
     ]
 cities.sort()
 states = [('andhra pradesh', 'Andhra Pradesh'), ('arunachal pradesh', 'Arunachal Pradesh'), ('assam', 'Assam'), ('bihar ', 'Bihar '), ('chhattisgarh', 'Chhattisgarh'), ('goa', 'Goa'), ('gujarat', 'Gujarat'), ('haryana', 'Haryana'), ('himachal pradesh', 'Himachal Pradesh'), ('jharkhand', 'Jharkhand'), ('karnataka', 'Karnataka'), ('kerala', 'Kerala'), ('madhya pradesh', 'Madhya Pradesh'), ('maharashtra', 'Maharashtra'), ('manipur', 'Manipur'), ('meghalaya', 'Meghalaya'), ('mizoram', 'Mizoram'), ('nagaland', 'Nagaland'), ('odisha', 'Odisha'), ('punjab', 'Punjab'), ('rajasthan', 'Rajasthan'), ('sikkim', 'Sikkim'), ('tamil nadu', 'Tamil Nadu'), ('telangana ', 'Telangana '), ('tripura', 'Tripura'), ('uttarakhand', 'Uttarakhand'), ('uttar pradesh ', 'Uttar Pradesh ')]    
@@ -151,7 +152,7 @@ class PostForm(forms.ModelForm):
         }
 
 class searchForm(forms.Form):
-    search = forms.CharField(widget=forms.Select(choices=cities))
+    search = forms.CharField(widget=forms.Select(choices=cities),label="")
 
     class Meta:
         fields = ['search']

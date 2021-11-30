@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+/* Media  */
+
+@media screen and (max-width:1400px) {
+    html {
+        font-size: 58%;
+    }
+    .content-right {
+        display: none;
+    }
+    .contact-content {
+        height: 240rem;
+    }
+    .form-box input,
+    textarea {
+        width: 100rem;
+    }
+}
+
+@media screen and (max-width:1000px) {
+    html {
+        font-size: 48%;
+    }
+    .content-right img {
+        display: none;
+    }
+    .contact-content {
+        height: 240rem;
+    }
+    .form-box input,
+    textarea {
+        width: 100rem;
+    }
+}
+
+@media screen and (max-width:600px) {
+    html {
+        font-size: 40%;
+    }
+    .content-right img {
+        display: none;
+    }
+    .contact-content {
+        height: 240rem;
+    }
+    .form-box input,
+    textarea {
+        width: 100rem;
+    }
+}
+
+@media screen and (max-width:400px) {
+    html {
+        font-size: 37%;
+    }
+    .content-right img {
+        display: none;
+    }
+    .contact-content {
+        height: 240rem;
+    }
+    .form-box input,
+    textarea {
+        width: 100rem;
+    }
+}
+
+
+/* Media End */
+
+:root {
+    --main-bg-color: rgb(252, 124, 5);
+    --font1: 'Ubuntu', sans-serif;
+    --font2: 'Fjalla One', sans-serif;
+    --font3: 'Bebas Neue', cursive;
+    --color-option: #092230;
+}
+
+.max-width1 {
+    width: 130rem;
+}
+
+.max-width2 {
+    width: 90rem;
+}
+
+.m-auto {
+    margin: auto;
+}
+
+.form-input {
+    padding: .5rem 5rem;
+    text-align: center;
+    font-family: var(--font1);
+    margin: 0rem 2rem;
+}
+
+.btn {
+    padding: .3rem 2rem;
+    border: .3rem solid black;
+    border-radius: 1rem;
+    font-family: var(--font1);
+    cursor: pointer;
+    background-color: var(--main-bg-color);
+    padding-bottom: .5rem;
+    font-size: 2.4rem;
+    color: white;
+}
+
+.btn:hover {
+    background-color: var(--color-option);
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+.font1 {
+    font-family: var(--font1);
+}
+
+.font2 {
+    font-family: var(--font2);
+}
+
+.m-y {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+
+/* HTML */
+
+html {
+    font-size: 62.5%;
+}
+
+
+/* Media */

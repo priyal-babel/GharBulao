@@ -27,10 +27,12 @@
     {% for r_post in reviews %}
       <div class="shadow card left_card ml-1" style="width:200px;">
           <a class="stretched-link text-decoration-none" href="http://localhost:8000/showPost/{{r_post.0.post.id}}">
-                      <img src="/media/{{r_post.0.image}}" class="img-fluid left_img" alt="">
+                      <img src="/media/{{r_post.0.0.image}}" class="img-fluid left_img" alt="">
                       <div class="card-block px-2" style="color: black;">
-                          <h6 class="card-text">{{r_post.0.post.name|title}}<span class="ml-5">{{}}</span></h6>
-                          <p class="card-text">{{r_post.0.post.city|title}}<span>, {{r_post.0.post.state|title}}</span></p>
+                      {% with r_post|last as last %}
+                          <h6 class="card-text">{{r_post.0.0.post.name|title}}<span class="ml-5"></span></h6>
+                          {% endwith %}
+                          <p class="card-text">{{r_post.0.0.post.city|title}}<span>, {{r_post.0.0.post.state|title}}</span></p>
                       </div>
           </a>
       </div>

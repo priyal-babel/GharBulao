@@ -14,6 +14,7 @@
 
 .main{
     width:100%;
+    height:88vh;
     display: flex;
 }
 
@@ -23,6 +24,9 @@
    flex-direction: column;
    align-items: center;
    position: sticky;
+   top: 0;
+   height:100%;
+   overflow-y: hidden;
    /* justify-content: center; */
    /* background-color: aqua; */
 }
@@ -32,27 +36,33 @@
 }
 
 .left_card{
-    width: 75%;
+    width: 60%;
 }
 
 .left_head{
     font-style: italic;
     font-weight: 400;
+    margin-left: 20;
 }
 
 .left_img{
-    height:150px;
+    height:140px;
 }
 
 .right{
     width: 60%;
+    overflow-y: scroll;
     /* display: flex;
     justify-content: flex-end; */
     /* background-color: darkblue; */
 }
 
+.right::-webkit-scrollbar{
+    display: none;
+}
+
 .cont{
-    width:100%;
+    width:95%;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -97,6 +107,7 @@
 
 .top_prop{
     display: flex;
+    margin-left: 40px;
 }
 
 .persuasion__item {
@@ -105,8 +116,6 @@
 
 .search_cont{
     display: flex;
-    /* justify-content: space-around; */
-    align-items: center;
     width: 100%;
 }
 
@@ -115,6 +124,6 @@
 }
 
 .search_btn{
-    height:35px;
-    margin-top:15px;
+    height:35px; 
+    margin-left: 15px;
 }

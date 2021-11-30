@@ -1,0 +1,34 @@
+.account-img {
+    height: 125px;
+    width: 125px;
+    margin-right: 20px;
+    margin-bottom: 16px;
+  }
+  
+  .account-heading {
+    font-size: 2.5rem;
+  }
+
+  .content-section{
+      background-color: #092230;
+      padding : 15px 20px;
+      margin: 20px auto;
+      width: 60%;
+      border-radius: 10px;
+  }
+
+  .outer{
+      width:97vw;
+  }
+
+  #file-upload-button{
+      width: 100px;
+  }
+
+  .profile_form{
+      color: #eae7d6;
+  }
+
+  .acc{
+      color:#eae7d6;
+  }

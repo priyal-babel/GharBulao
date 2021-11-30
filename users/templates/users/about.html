@@ -1,0 +1,74 @@
+{% extends 'users/base.html'%}
+{% load static %}
+{% block style %}
+  <link rel="stylesheet" type="text/css" href="{% static 'users/about.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'users/style.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'users/utils.css'%}">
+{% endblock style %}
+{% block content %}
+    <div class="line max-width1 m-auto">
+        <hr>
+    </div>
+
+    <h2 class="m-y m-auto about font1">
+        About GharBulao.com
+    </h2>
+
+    <!-- Company -->
+    <div class="company max-width1 m-auto font1 m-y">
+
+
+        <div class="logo">
+            <img src="/media/logo.jpeg" alt="">
+        </div>
+
+        <div class="company-content">
+
+            <a href="">
+                <h3>
+                    GharBulao.com is a social networking service and hospitality exchange service by which users can request homestays or interact with other people who are interested in travel.
+                </h3>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Container -->
+    <div class="container max-width1 m-auto font1">
+        <h2 class="m-y">Our Team</h2>
+        <!-- 1 -->
+        <div class="container-inside">
+            <div class="container-inside-img">
+                <img src='/media/profile/Krish4.jpeg'>
+            </div>
+            <div class="container-inside-content">
+                <a href="">
+                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing.</h3>
+                </a>
+            </div>
+        </div>
+        <!-- 2 -->
+        <div class="container-inside-right">
+            <div class="container-inside-content">
+                <a href="">
+                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing.</h3>
+                </a>
+            </div>
+            <div class="container-inside-img">
+                <img src='/media/profile/priyal.jpg'>
+            </div>
+        </div>
+        <!-- 3 -->
+        <div class="container-inside">
+
+            <div class="container-inside-img">
+                <img src='/media/profile/devansh.jpeg'>
+            </div>
+            <div class="container-inside-content">
+                <a href="">
+                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing.</h3>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

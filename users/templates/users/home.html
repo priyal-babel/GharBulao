@@ -1,10 +1,89 @@
 {% extends "users/base.html" %}
-
+{% load static %}
 {% block style %}
-  
+     <link rel="stylesheet" type="text/css" href="{% static 'users/style.css'%}">
+     <link rel="stylesheet" type="text/css" href="{% static 'users/utils.css'%}">
 {% endblock style %}
 {% block body %}
- <div>
-      Welcome {{user.username}}
- </div>
+<div class="content m-auto max-width1 m-y">
+
+        <div class="content-left">
+            <h1 class="m-y">Heaven for Travellers</h1>
+
+            <div class='content-left-inside'>
+                <b> GharBulao.com </b>is a service that connects members to a global community of travelers. Use Couchsurfing to find a place to stay or share your home and hometown with travelers. Couchsurfers organize regular events in 200,000 cities
+                around the world. There's always something to do and new friends to meet.
+            </div>
+
+        </div>
+
+        <div class="content-right">
+            <img src="https://images.squarespace-cdn.com/content/v1/56b068bcf8baf3fe2ec88413/1480295115815-G0DFBKHPEVZVPZ9BR937/couch+surfing+2.jpg?format=500w" alt=" ">
+        </div>
+
+    </div>
+
+    <!-- line -->
+    <div class="max-width1 m-auto">
+        <hr>
+    </div>
+
+
+
+    <!-- Our Services -->
+
+    <div class="home-articles max-width1 m-auto font1">
+
+        <h2>Our Services</h2>
+
+        <!-- 1 -->
+        <div class="home-article-inside">
+
+            <div class="home-article-inside-img">
+                <img src="https://images.squarespace-cdn.com/content/v1/56b068bcf8baf3fe2ec88413/1480295115815-G0DFBKHPEVZVPZ9BR937/couch+surfing+2.jpg?format=500w" alt="">
+            </div>
+
+            <div class="home-article-inside-content">
+                <a href="">
+                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing.</h3>
+                </a>
+            </div>
+
+        </div>
+
+
+        <!-- 2 -->
+        <div class="home-article-inside-right">
+
+            <div class="home-article-inside-content">
+                <a href="">
+                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing.</h3>
+                </a>
+
+            </div>
+
+            <div class="home-article-inside-img">
+                <img src="https://images.squarespace-cdn.com/content/v1/56b068bcf8baf3fe2ec88413/1480295115815-G0DFBKHPEVZVPZ9BR937/couch+surfing+2.jpg?format=500w" alt="">
+            </div>
+
+        </div>
+
+
+        <!-- 3 -->
+        <div class="home-article-inside">
+
+            <div class="home-article-inside-img">
+                <img src="https://images.squarespace-cdn.com/content/v1/56b068bcf8baf3fe2ec88413/1480295115815-G0DFBKHPEVZVPZ9BR937/couch+surfing+2.jpg?format=500w" alt="">
+            </div>
+
+            <div class="home-article-inside-content">
+                <a href="">
+                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing.</h3>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+
 {% endblock body %}
