@@ -1,14 +1,14 @@
 /* Contact Content Section */
 
 .contact-content {
-    height: 75rem;
+    height: 300px;
     background-color: var(--color-option);
-    /* border: 5rem solid darkblue; */
+    /* border: 5px solid darkblue; */
     display: flex;
     font-family: var(--font1);
     flex-direction: column;
     overflow: hidden;
-    border-radius: 3rem;
+    /* border-radius: 3px; */
 }
 
 
@@ -20,16 +20,16 @@
     height: inherit;
     opacity: 0.3;
     z-index: -1;
-    border-radius: 2rem;
+    border-radius: 2px;
 } */
 
 .contact-content h2 {
     text-align: center;
-    font-size: 3.5rem;
+    font-size: 3.5px;
 }
 
 .contact-form {
-    margin: 2rem auto;
+    margin: 2px auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -37,11 +37,11 @@
 
 .form-box input,
 textarea {
-    width: 70rem;
-    padding: .3rem 1rem;
-    border: .3rem solid black;
-    margin: 1rem 0rem;
-    border-radius: .7rem;
+    width: 70px;
+    padding: .3px 1px;
+    border: .3px solid black;
+    margin: 1px 0px;
+    border-radius: .7px;
     font-family: var(--font1);
-    font-size: 2rem;
+    font-size: 2px;
 }

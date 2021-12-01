@@ -2,14 +2,15 @@
 {% load crispy_forms_tags %}
 {% load static %}
 {% block style %}
-  <link rel="stylesheet" type="text/css" href="{% static 'users/PostList.css' %}"
+  <link rel="stylesheet" type="text/css" href="{% static 'users/PostList.css' %}">
+  {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'users/style.css' %}"> {% endcomment %}
 {% endblock style %}
 
 {% block body %}
 
 <br>
 
-<div class="main">
+<div class="main mb-5">
   <div class="left">
   <div class="form_left">
     <form method='POST'>
@@ -26,7 +27,7 @@
     <div class="row">
     {% for r_post in reviews %}
       <div class="shadow card left_card ml-1" style="width:200px;">
-          <a class="stretched-link text-decoration-none" href="http://localhost:8000/showPost/{{r_post.0.post.id}}">
+          <a class="stretched-link text-decoration-none" href="http://localhost:8000/showPost/{{r_post.0.0.post.id}}">
                       <img src="/media/{{r_post.0.0.image}}" class="img-fluid left_img" alt="">
                       <div class="card-block px-2" style="color: black;">
                       {% with r_post|last as last %}

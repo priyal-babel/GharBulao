@@ -2,49 +2,68 @@
 {% load crispy_forms_tags %}
 {% load static %}
 {% block style %}
-  <link rel="stylesheet" type="text/css" href="{% static 'users/Contact.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'users/style.css'%}">
-<link rel="stylesheet" type="text/css" href="{% static 'users/utils.css'%}">
+<style>
+</style>
 {% endblock style %}
 
 {% block body %}
-
-<!-- line -->
-    <div class="max-width1 m-auto">
-        <hr>
-    </div>
-
-
-    <!-- Conatact Content -->
-    <div class="contact-content m-y m-auto max-width1">
-
-        <!-- Heading -->
-        <h2 class="max-width1 m-y">Feel Free to Contact Us</h2>
-
-        <!-- Contact Form -->
-        <div class="contact-form max-width1">
-
-            <div class="form-box">
-                <input type="text" placeholder="Enter your name">
-            </div>
-
-            <div class="form-box">
-                <input type="text" placeholder="Enter your Phone Number">
-            </div>
-
-            <div class="form-box">
-                <input type="text" placeholder="Enter your Email">
-            </div>
-
-            <div class="form-box">
-                <textarea name="" id="" cols="30" rows="10" placeholder="Do let us know incase of any suggestions?"></textarea>
-            </div>
-
-            <div class="form-box">
-                <button class="btn">Submit</button>
-            </div>
-
+   <div class="my-3">
+        <h2 class="contact_h2 text-center mt-4">Contact Us</h2>
+      </div>
+      <div class="container contact">
+        <div class="row">
+          <div class="col-md-6 col-11 mx-auto">
+            <form method="POST" action='' id="post_form">
+            {% csrf_token %} 
+              <div class="mb-3">
+                <label htmlFor="exampleFormControlInput1" class="form-label">Full Name </label>
+                <input type="text" class="form-control myform" id="exampleFormControlInput1" name="fullname" required placeholder="Enter your name" />
+              </div>
+              <div class="mb-3">
+                <label htmlFor="exampleFormControlInput1" class="form-label">Email address</label>
+                <input type="email"  class="form-control myform" id="exampleFormControlInput2" name="email"  required placeholder="Enter your mail" />
+              </div>
+              <div class="mb-3">
+                <label htmlFor="exampleFormControlInput1" class="form-label">Education</label>
+                <input type="text"  class="form-control myform" id="exampleFormControlInput3" name="education"  required placeholder="Enter your education" />
+              </div>
+              <div class="mb-3">
+                <label htmlFor="exampleFormControlTextarea1" class="form-label">Message</label>
+                <textarea  class="form-control myform" id="exampleFormControlTextarea1" rows="3" required name="message"></textarea>
+              </div>
+              <div class="form-group">
+              <button class="btn btn-outline-primary" type="submit">Submit</button>
+              </div>
+            </form>
+          </div>
         </div>
-    </div>
+      </div>
+
 {% endblock body %}
+{% block js %}
+  $(document).on('submit',function(e){
+      e.preventDefault();
+    $.ajax({
+        type:'POST',
+        url:'{% url "contact" %}',
+        data:{
+            full_name: $('#exampleFormControlInput1').val(),
+            email : $('#exampleFormControlInput2').val(),
+            education: $('#exampleFormControlInput3').val(),
+            message : $('#exampleFormControlTextarea1').val(),
+            csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+            action: ''
+        },
+        success:function(json){
+            console.log("done!!");
+            window.alert("Your message/query has been sent successfully!");
+            return window.location.href = "http://localhost:8000/contact";
+        },
+        error : function(xhr,errmsg,err) {
+            window.alert("Sorry, something went wrong!");
+            document.getElementById("post_form").clear();
+    }
+    });
+});
+{% endblock js %}
     

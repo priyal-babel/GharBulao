@@ -5,7 +5,7 @@
 
 /* Media  */
 
-@media screen and (max-width:1400px) {
+/* @media screen and (max-width:1400px) {
     html {
         font-size: 58%;
     }
@@ -67,7 +67,7 @@
     textarea {
         width: 100rem;
     }
-}
+} */
 
 
 /* Media End */
@@ -133,9 +133,9 @@
 
 /* HTML */
 
-html {
+/* .html1 {
     font-size: 62.5%;
-}
+} */
 
 
 /* Media */

@@ -1,74 +1,160 @@
-{% extends 'users/base.html'%}
-{% load static %}
+{% extends "users/base.html" %}
+
 {% block style %}
-  <link rel="stylesheet" type="text/css" href="{% static 'users/about.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'users/style.css'%}">
-    <link rel="stylesheet" type="text/css" href="{% static 'users/utils.css'%}">
+<style>
+.fa {
+  padding: 10px;
+  font-size: 20px;
+  width: 40px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 40%;
+}
+
+/* Add a hover effect if you want */
+.fa:hover {
+  opacity: 0.7;
+}
+
+/* Set a specific color for each brand */
+
+.fa-linkedin {
+    background: #0e76a8 ;
+    color: white;
+}
+.fa-envelope {
+    background: #BB001B ;
+    color: white;
+}
+
+.fa-whatsapp {
+  background: #25D366;
+  color: white;
+}
+
+.padding-c{
+    padding-top: 50px;
+}
+.img-height{
+  height: 250px;
+}
+
+.logo{
+  animation: slide 1s alternate infinite ease-in-out;
+  {% comment %} -webkit-filter: drop-shadow(3px 3px 3px #222); {% endcomment %}
+  {% comment %} filter: drop-shadow(3px 3px 3px #222); {% endcomment %}
+}
+
+@keyframes slide{
+  from{
+    transform : translateY(5px);
+  }
+  to{
+    transform : translateY(-5px);
+  }
+}
+
+.bio{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#abc{
+  font-size: 30px;
+  margin-left: 7px;
+}
+.para{
+  padding-top: 30px;
+  font-size: 22px;
+  color: white;
+}
+</style>
+
 {% endblock style %}
-{% block content %}
-    <div class="line max-width1 m-auto">
-        <hr>
-    </div>
 
-    <h2 class="m-y m-auto about font1">
-        About GharBulao.com
-    </h2>
+{% block body %}
 
-    <!-- Company -->
-    <div class="company max-width1 m-auto font1 m-y">
-
-
-        <div class="logo">
-            <img src="/media/logo.jpeg" alt="">
+          <div class="container padding-c">
+            <div class="jumbotron" style="background: #092230">
+              <div class="bio">
+                <img src="/media/logo.jpeg" width="300px" class="logo" alt="Logo">
+                <p class="para text-center"><span id="abc"><i class="fas fa-quote-left"></i></span> GharBulao.com is a social networking service and hospitality exchange service by which users can request homestays or interact with other people who are interested in travel.<span id="abc"><i class="fas fa-quote-right"></i></span></p>
+            </div>
+          <hr class="my-1" style="background: white;">
+        </div>
+          </div>
+        
+      
+        <div class="album py-5 bg-light mb-5">
+          <div class="container">
+            <h2 class="text-center">Our Team</h2>
+          <hr>
+            <div class="row d-flex justify-content-center">
+              <div class="col-lg-3 d-flex align-items-stretch">
+                <div class="card shadow-sm">  
+                    <img src="/media/profile/Krish4.jpeg" class="card-img-top img-height" alt="..." style="max-height:300px;">         
+                  <div class="card-body">
+                    <h5 class="card-title">Krish Vadhani</h5><hr>
+                    <p class="card-text">Third Year Computer Engineering student from K. J. Somaiya College Of Engineering.</p>
+                      <div class="row">
+                        <div class="col">
+                            <a href="https://wa.me/919082131581?text=Hey!%20I%20would%20like%20to%20connect%20with%20you%20regarding%20your%20website" class="fa fa-whatsapp"></a>
+                        </div>
+                        <div class="col">
+                          <a href="https://www.linkedin.com/in/krish-vadhani-020a19197/" class="fa fa-linkedin"></a>
+                        </div>
+                        <div class="col">
+                            <a href="mailto:krish.vadhani@somaiya.edu" class="fa fa-envelope"></a>
+                          </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 d-flex align-items-stretch">
+                <div class="card shadow-sm">    
+                    <img src="/media/profile/priyal.jpg" class="card-img-top img-height" alt="..." style="max-height:300px;">       
+                  <div class="card-body">
+                    <h5 class="card-title">Priyal Babel</h5><hr>
+                    <p class="card-text">Third Year Computer Engineering student from K. J. Somaiya College Of Engineering.</p>
+                    <div class="row">
+                        <div class="col">
+                            <a href="https://wa.me/918976514635?text=Hey!%20I%20would%20like%20to%20connect%20with%20you%20regarding%20your%20website" class="fa fa-whatsapp"></a>
+                        </div>
+                        <div class="col">
+                          <a href="https://www.linkedin.com/in/priyal-babel/" class="fa fa-linkedin"></a>
+                        </div>
+                        <div class="col">
+                            <a href="mailto:priyalbabel@gmail.com" class="fa fa-envelope"></a>
+                          </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 d-flex align-items-stretch">
+                <div class="card shadow-sm">
+                    <img src="/media/profile/devansh.jpeg" class="card-img-top img-height" alt="..." style="max-height:300px;">     
+                  <div class="card-body">
+                    <h5 class="card-title">Devansh Shah</h5><hr>
+                    <p class="card-text">Third Year Computer Engineering student from K. J. Somaiya College Of Engineering.</p>
+                    <div class="row">
+                        <div class="col">
+                            <a href="https://wa.me/918767036024?text=Hey!%20I%20would%20like%20to%20connect%20with%20you%20regarding%20your%20website" class="fa fa-whatsapp"></a>
+                        </div>
+                        <div class="col">
+                          <a href="https://www.linkedin.com/in/devansh-shah-6162841a4/" class="fa fa-linkedin"></a>
+                        </div>
+                        <div class="col">
+                          <a href="mailto:devanshshah649@gmail.com" class="fa fa-envelope"></a>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="company-content">
-
-            <a href="">
-                <h3>
-                    GharBulao.com is a social networking service and hospitality exchange service by which users can request homestays or interact with other people who are interested in travel.
-                </h3>
-            </a>
-        </div>
-
-    </div>
-
-    <!-- Container -->
-    <div class="container max-width1 m-auto font1">
-        <h2 class="m-y">Our Team</h2>
-        <!-- 1 -->
-        <div class="container-inside">
-            <div class="container-inside-img">
-                <img src='/media/profile/Krish4.jpeg'>
-            </div>
-            <div class="container-inside-content">
-                <a href="">
-                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing.</h3>
-                </a>
-            </div>
-        </div>
-        <!-- 2 -->
-        <div class="container-inside-right">
-            <div class="container-inside-content">
-                <a href="">
-                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing.</h3>
-                </a>
-            </div>
-            <div class="container-inside-img">
-                <img src='/media/profile/priyal.jpg'>
-            </div>
-        </div>
-        <!-- 3 -->
-        <div class="container-inside">
-
-            <div class="container-inside-img">
-                <img src='/media/profile/devansh.jpeg'>
-            </div>
-            <div class="container-inside-content">
-                <a href="">
-                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing.</h3>
-                </a>
-            </div>
-        </div>
-    </div>
-{% endblock %}
+  
+{% endblock body %}

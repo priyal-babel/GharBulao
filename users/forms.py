@@ -137,7 +137,8 @@ class PostForm(forms.ModelForm):
     widget  = forms.CheckboxSelectMultiple,
 
     )
-    name = forms.CharField()
+    name = forms.CharField(label="Property Name")
+    desc = forms.Textarea()
     
     def clean_amenities(self):
         data = str(self.cleaned_data['amenities'])
@@ -148,6 +149,7 @@ class PostForm(forms.ModelForm):
         fields = ['name','desc','amenities','address','city','state','pincode','Area']
         widgets = {
           'desc': forms.Textarea(attrs={'rows': 4, 'cols':15,'style':'resize:none;'}),
+
           'address': forms.Textarea(attrs={'rows': 4, 'cols':15,'style':'resize:none;'}),
         }
 

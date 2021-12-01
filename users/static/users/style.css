@@ -12,9 +12,9 @@ body {
 /* Content Section */
 
 .content {
-    height: 30rem;
-    background-color: var(--color-option);
-    border-radius: 3rem;
+    height: 20rem;
+    /* background-color: var(--color-option); */
+    /* border-radius: 3rem; */
     /* border: 5rem solid darkblue; */
     display: flex;
     /* width: 100vw; */
@@ -133,26 +133,4 @@ body {
     border-radius: 3rem;
     margin-top: 2rem;
     margin-bottom: 2rem;
-}
-
-
-/* Footer Section */
-
-.footer {
-    height: 5rem;
-    background-color: var(--color-option);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    flex-direction: column;
-    position: relative;
-    margin-bottom: 0rem;
-    font-size: 1.4rem;
-    /* width: 130rem; */
-}
-
-.footer a {
-    color: white;
-    text-decoration: none;
 }

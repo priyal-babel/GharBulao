@@ -6,12 +6,17 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Img, Post, Reviews
 from django.db.models import Avg
-from django.core.exceptions import PermissionDenied
+from django.contrib.auth.decorators import user_passes_test
 
 from users.models import Profile
 from .forms import ProfileUpdateForm, UserRegisterForm, UserUpdateForm,PostForm, searchForm
 
+def user_is_not_logged_in(user):
+   return not user.is_authenticated()
+
+@user_passes_test(user_is_not_logged_in, login_url='/')
 def register(request):
+ if not request.user:
    if(request.method == 'POST'):
       u_form = UserRegisterForm(request.POST)
       # p_form = ProfileUpdateForm(request.POST,request.FILES or None)
@@ -25,6 +30,8 @@ def register(request):
    else:
       u_form = UserRegisterForm()
    return render(request,'users/register.html',{'u_form' : u_form})
+ else:
+      return redirect('home')
 
 @login_required
 def profileUpdate(request):
@@ -99,7 +106,6 @@ def postList(request):
       x = [Img.objects.select_related().filter(post=r)]
       x.append(r.avg_rating)
       review_post.append(x)
-   print(review_post)
    form = searchForm()
    if request.method == 'POST':
       form = searchForm(request.POST)
@@ -125,6 +131,18 @@ def about(request):
    return render(request,'users/about.html')
 
 def contact(request):
+   try:
+      # if request.POST.get('action') == 'contact':
+      # if request.is_ajax():
+      if request.method == 'POST':
+         full_name = request.POST.get('full_name')
+         email = request.POST.get('email')
+         education  = request.POST.get('education')
+         message  = request.POST.get('message')
+         print("FN : " + full_name + " email : " + email + " education : " + education + " message : " + message)
+         return HttpResponse('<html></html>')
+   except:
+      return HttpResponseNotFound('<html></html>')
    return render(request,'users/contact.html')
 
 # def getdata(request):

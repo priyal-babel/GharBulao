@@ -1,21 +1,21 @@
 * {
     box-sizing: border-box;
-    margin: 0rem;
-    padding: 0rem;
+    margin: 0px;
+    padding: 0px;
 }
 
 .about {
     color: black;
     text-align: center;
-    font-size: 3.6rem;
+    font-size: 3.6px;
 }
 
 .company {
     display: flex;
     flex-direction: row;
     background-color: var(--color-option);
-    border-radius: 3rem;
-    margin-bottom: 2rem;
+    border-radius: 3px;
+    margin-bottom: 2px;
     justify-content: center;
 }
 
@@ -28,36 +28,34 @@
 }
 
 .company-content h3 {
-    font-size: 2.6rem;
+    font-size: 2.6px;
     color: rgb(255, 246, 235);
 }
 
 .company-content h3:hover {
-    font-size: 2.6rem;
+    font-size: 2.6px;
     color: var(--main-bg-color);
 }
 
 .logo img {
-    height: 15rem;
-    margin: 3.5rem 4.5rem;
-    border-radius: 1rem;
+    height: 15px;
+    margin: 3.5px 4.5px;
+    border-radius: 1px;
     border: 2px solid black;
 }
 
 .company-content:hover {
-    font-size: 2.6rem;
+    font-size: 2.6px;
     color: var(--main-bg-color);
 }
 
 .container {
-    /* background-color: var(--color-option); */
-    /* padding: 2rem; */
-    border-radius: 2rem;
+    border-radius: 2px;
     position: relative;
 }
 
 .container h2 {
-    font-size: 4.5rem;
+    font-size: 4.5px;
     text-align: center;
     color: black;
 }
@@ -66,8 +64,8 @@
     display: flex;
     flex-direction: row;
     background-color: var(--color-option);
-    border-radius: 3rem;
-    margin-bottom: 2rem;
+    border-radius: 3px;
+    margin-bottom: 2px;
     justify-content: center;
 }
 
@@ -75,18 +73,18 @@
     display: flex;
     flex-direction: row;
     background-color: var(--color-option);
-    border-radius: 3rem;
-    margin-bottom: 2rem;
+    border-radius: 3px;
+    margin-bottom: 2px;
     justify-content: center;
 }
 
 .container-inside-content {
     align-self: center;
-    padding: 3rem;
+    padding: 3px;
 }
 
 .container-inside-content h3 {
-    font-size: 2.6rem;
+    font-size: 2.6px;
     color: rgb(255, 246, 235);
 }
 
@@ -95,14 +93,14 @@
 }
 
 .container-inside-content h3:hover {
-    font-size: 2.6rem;
+    font-size: 2.6px;
     color: var(--main-bg-color);
 }
 
 .container-inside-img img {
-    height: 30rem;
-    min-width: 30rem;
-    margin: 3.5rem 4.5rem;
-    border-radius: 1rem;
+    height: 30px;
+    min-width: 30px;
+    margin: 3.5px 4.5px;
+    border-radius: 1px;
     border: 2px solid black;
 }
