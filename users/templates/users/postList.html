@@ -9,14 +9,14 @@
 {% block body %}
 
 <br>
-
+<br>
 <div class="main mb-5">
   <div class="left">
   <div class="form_left">
     <form method='POST'>
             {% csrf_token %}
             <h4 class="border-bottom mb-3" style="text-align : center;">Book your ideal Holiday Home.</h4>
-               <div class="search_cont">
+               <div class="search_cont d-flex justify-content-center">
                 {{ form|crispy }}
                 <button class="search_btn btn btn-outline-primary" type="submit">Search</button>
                 </div>
@@ -26,13 +26,18 @@
     <h6 class="left_head text-left">Top Rated Properties in India: </h6>
     <div class="row">
     {% for r_post in reviews %}
-      <div class="shadow card left_card ml-1" style="width:200px;">
-          <a class="stretched-link text-decoration-none" href="http://localhost:8000/showPost/{{r_post.0.0.post.id}}">
+      <div class="shadow card left_card ml-2" style="width:200px;">
+          <a class="stretched-link text-decoration-none" href={% url "showPost" r_post.0.0.post.id %}>
                       <img src="/media/{{r_post.0.0.image}}" class="img-fluid left_img" alt="">
                       <div class="card-block px-2" style="color: black;">
-                      {% with r_post|last as last %}
-                          <h6 class="card-text">{{r_post.0.0.post.name|title}}<span class="ml-5"></span></h6>
-                          {% endwith %}
+                      <div class="row">
+                        <div class="col-auto">
+                          <h6 class="card-text">{{r_post.0.0.post.name|title}}</h6>
+                        </div>
+                        <div class="col">
+                          <h6 class="card-text">{{r_post.1}}<span class="fas fa-star ml-1" style="color: #092230"></span></h6>
+                        </div>
+                      </div>
                           <p class="card-text">{{r_post.0.0.post.city|title}}<span>, {{r_post.0.0.post.state|title}}</span></p>
                       </div>
           </a>
@@ -40,7 +45,7 @@
 
       {% if forloop.counter|divisibleby:2 %}
       </div>
-      <div class="row mt-1">
+      <div class="row mt-2">
     {% endif %}
     {% endfor %}
     </div>
@@ -58,14 +63,14 @@
             <div class="col">
                 <div class="card-block px-2">
                 <div class="persuasion__item pc__entireProperty">
-                <div class="pc__html">ROOM IN HOUSE <span class="pst_area">{{p.0.post.Area}} SQ.FT</span></div>
+                    <div class="pc__html">ROOM IN HOUSE <span class="pst_area">{{p.0.post.Area}} SQ.FT</span></div>
                 </div>
                     <h4 class="card-title">{{p.0.post.name}}</h4>
                     <div class="p_cont">
                     <p class="card-text">{{p.0.post.desc}}</p>
                     </div>
 
-                    <a href="http://localhost:8000/showPost/{{key}}" class="btn btn-outline-primary mt-3 mb-3">Explore!!</a>
+                    <a href={% url "showPost" key %} class="btn btn-outline-primary mt-3 mb-3">Explore!!</a>
                 </div>
             </div>
         </div>

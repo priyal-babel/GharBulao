@@ -1,86 +1,39 @@
 {% extends "users/base.html" %} {% load static %} {% block style %}
 <link rel="stylesheet" type="text/css" href="{% static 'users/style.css'%}" />
 <link rel="stylesheet" type="text/css" href="{% static 'users/utils.css'%}" />
+<link rel="stylesheet" type="text/css" href="{% static 'users/home.css'%}" />
 {% endblock style %} 
 {% block body %}
 
-<div style="font-size: 62.5%">
-<div class="content" style="font-size: 62.5%">
-  <div class="content-left">
-    <h1 class="m-y">Heaven for Travellers</h1>
-    <div class="content-left-inside">
-      <b> GharBulao.com </b>is a service that connects members to a global
-      community of travelers. Use Couchsurfing to find a place to stay or share
-      your home and hometown with travelers. Couchsurfers organize regular
-      events in 200,000 cities around the world. There's always something to do
-      and new friends to meet.
-    </div>
-  </div>
-  {% comment %} <div class="content-right">
-    <img
-      src="https://images.squarespace-cdn.com/content/v1/56b068bcf8baf3fe2ec88413/1480295115815-G0DFBKHPEVZVPZ9BR937/couch+surfing+2.jpg?format=500w"
-      alt=" "
-    />
-  </div> {% endcomment %}
+<div class="landing_img d-flex justify-content-center align-items-center" style="width:100vw;height:90vh;">
+    <h3 class="text-center ml-2 mr-2 tag_line" style="color:#fff;"><i class="fas fa-quote-right icon_flip"></i> Stay with the locals and meet new Travellers! :) <i class="fas fa-quote-right"></i></h3>
+    <h6 class="author">~ GharBulao</h6>
 </div>
-<!-- line -->
-<div class="max-width1 m-auto">
-  <hr />
-</div>
-
-<!-- Our Services -->
-
-<div class="home-articles max-width1 m-auto font1">
-  <h2>Our Services</h2>
-
-  <!-- 1 -->
-  <div class="home-article-inside">
-    <div class="home-article-inside-img">
-      <img
-        src="https://images.squarespace-cdn.com/content/v1/56b068bcf8baf3fe2ec88413/1480295115815-G0DFBKHPEVZVPZ9BR937/couch+surfing+2.jpg?format=500w"
-        alt=""
-      />
+<div class="container">
+{% for service in services %}
+<div class="card mx-auto mb-3 mt-5" style="maxWidth:85%;background-color:#092230;border-radius:10px;padding:5px;box-shadow:5px 10px 8px #888888">
+  <div class="row no-gutters">
+  {% if forloop.counter|divisibleby:2 %}
+    <div class="col-md-4 order-md-2 order-sm-1">
+  {% else %}
+    <div class="col-md-4 order-md-1 order-sm-1">
+  {% endif %}
+      <img className="service_img" src={{service.img}}  style="height:250px;width:100%;"></img>
     </div>
-
-    <div class="home-article-inside-content">
-      <a href="">
-        <h3>Lorem ipsum dolor sit amet consectetur adipisicing.</h3>
-      </a>
-    </div>
-  </div>
-
-  <!-- 2 -->
-  <div class="home-article-inside-right">
-    <div class="home-article-inside-content">
-      <a href="">
-        <h3>Lorem ipsum dolor sit amet consectetur adipisicing.</h3>
-      </a>
-    </div>
-
-    <div class="home-article-inside-img">
-      <img
-        src="https://images.squarespace-cdn.com/content/v1/56b068bcf8baf3fe2ec88413/1480295115815-G0DFBKHPEVZVPZ9BR937/couch+surfing+2.jpg?format=500w"
-        alt=""
-      />
-    </div>
-  </div>
-
-  <!-- 3 -->
-  <div class="home-article-inside">
-    <div class="home-article-inside-img">
-      <img
-        src="https://images.squarespace-cdn.com/content/v1/56b068bcf8baf3fe2ec88413/1480295115815-G0DFBKHPEVZVPZ9BR937/couch+surfing+2.jpg?format=500w"
-        alt=""
-      />
-    </div>
-
-    <div class="home-article-inside-content">
-      <a href="">
-        <h3>Lorem ipsum dolor sit amet consectetur adipisicing.</h3>
-      </a>
+  {% if forloop.counter|divisibleby:2 %}
+    <div class="col-md-8 order-md-1 order-sm-2" style="padding:10px;">
+  {% else %}
+    <div class="col-md-8 order-md-1 order-sm-2" style="padding:10px;">
+  {% endif %}
+      <div className="card-body">
+        <h5 className="card-title service_title">{{service.title}}</h5>
+        <p className="card-text service_desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+      </div>
     </div>
   </div>
 </div>
+{% endfor %}
 </div>
-
+<br>
+<br>
 {% endblock body %}

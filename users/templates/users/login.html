@@ -1,3 +1,4 @@
+<br>
 {% extends "users/base.html" %}
 {% load static %}
 {% load crispy_forms_tags %}
@@ -7,14 +8,14 @@
 
 {% block body %}
 <div class="login">
-<div class="container mycont">
+<div class="container p-3 mycont">
     {% comment %} <div class="jumbotron" style="background-color: #092230;"> {% endcomment %}
         <form method='POST'>
             {% csrf_token %}
                 <h5 class="mb-4 head" style="text-align:center;">Login</h5>
                 {{ form|crispy }}
             <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">LogIn</button>
+                <button class="btn btn-outline-info" type="submit">Log in</button>
             </div>
         </form>
         <div class="border-top pt-3">

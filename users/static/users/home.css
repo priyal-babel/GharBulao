@@ -1,0 +1,50 @@
+body{
+    overflow-x: hidden;
+}
+
+.landing_img{
+    /* background-image: url("https://images.unsplash.com/photo-1592819695396-064b9572a660?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-2.5.1&auto=format&fit=crop&w=1170&q=80"); */
+    background:linear-gradient(rgba(17, 15, 15, 0.8), rgba(29, 23, 23, 0.8)), url("https://i1.wp.com/unusualplaces.org/wp-content/uploads/2019/12/42340084102_f20cfaf1b7_k.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.icon_flip{
+    transform: scale(-1, 1);
+}
+
+.tag_line{
+    font-family: 'Zen Antique Soft', serif;
+}
+
+.author{
+    color: white;
+    position: absolute;
+    top: 55%;
+    right: 10%;
+    font-style: italic;
+    font-weight: 400;
+}
+
+.service_img{
+    width: 100%;
+    height: auto
+}
+
+@media(max-width:992px){
+    .tag_line{
+        font-size: 25px;
+    }
+}
+
+@media(max-width:860px){
+    .tag_line{
+        font-size: 20px;
+    }
+}
+
+@media(max-width:680px){
+    .tag_line{
+        font-size: 18px;
+    }
+}

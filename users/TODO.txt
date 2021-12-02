@@ -1,5 +1,0 @@
-booking model
-past bookings UI
-show post UI
-Login/Register UI
-Navbar

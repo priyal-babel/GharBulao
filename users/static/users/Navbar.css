@@ -1,7 +1,6 @@
 :root {
     --blue: #092230;
     --off_white: #eae7d6;
-    --color-option: #092230;
 }
 
 .custom-navbar{
@@ -14,6 +13,9 @@
 
 .navbar a {
     color: var(--off_white);
+    margin-left:15px;
+    margin-right:15px;
+    font-size: 18px;
 }
 
 .img {
@@ -22,5 +24,6 @@
 }
 
 .ftr{
-    background-color: #092230 !important;
+    background-color: var(--blue) !important;
+    height: 5vh;
   }

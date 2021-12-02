@@ -1,0 +1,62 @@
+{% extends "users/base.html" %} {% load static %} {% block style %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'users/Receipt.css' %}"
+/>
+{% endblock style %} {% block body %}
+<br />
+<br />
+<div class="print">
+  <hr />
+  <div class="mb-3" style="padding-left: 30px">
+  <h3 >To,</h3>
+  <div class="pl-5">{{user.first_name}} {{user.last_name}}</div>
+  <div class="pl-5">{{user.profile.mobile_no}}</div>
+  <div class="pl-5">{{user.email}}</div>
+  <div class="pl-5">Booking date: {{post.date}}</div>
+  </div>
+  <div class="container">
+    <div class="shadow card mb-3 mx-auto">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img
+            src={{post.img.url}}
+            class="card-img"
+            alt="..."
+            height= 250
+            width= 100
+          />
+        </div>
+        <div class="col-md-8">
+          <div class="card-body ml-5">
+          <h5 class="card-title">{{post.name}}</h5>
+        <p class="card-text"><i class="fas fa-home mr-2"></i> {{post.address}}</p>
+          <div class="row">
+          <div class="col">
+            <p class="card-text"><i class="fas fa-map-pin mr-3 pl-1"></i></i> {{post.pincode}}</p>
+            <p class="card-text"><i class="fas fa-calendar-day mr-2 pl-1 pr-1"></i></i> 30/12/2021</p>
+            </div>
+            <div class="col">
+            <img src="/media/confirmed.jpg" height=115 width=200 alt="Confirmed" style="margin-left: 20px">
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+  </div>
+</div>
+<div style="margin-right: 200px; padding-left: 200px; padding-top: 20px">
+  <div class="text-right">
+    <a>
+      <button id="printInvoice" class="btn btn-info">
+        <i class="fa fa-print"></i> Download Invoice
+      </button>
+    </a>
+  </div>
+</div>
+{% endblock body %} {% block js %} $('#printInvoice').click(function(){ let pdf
+= new jsPDF(); let section=$('.print'); let page= function() {
+pdf.save('pagename.pdf'); }; pdf.addHTML(section,page); }); {% endblock js %}

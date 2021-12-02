@@ -15,6 +15,9 @@
     <title>GharBulao</title>
     <link rel="stylesheet" type="text/css" href="{% static 'users/Navbar.css' %}">
     {% block style %}
+    .navbar{
+      height: 10vh !important;
+    }
     {% endblock style %}
   </head>
   <body>
@@ -33,16 +36,16 @@
                   <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
+                  <a class="nav-link" href="{% url 'postList' %}">Book</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'post' %}">Post</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'about' %}">About</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'postList' %}">Book Property</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'post' %}">Add Property</a>
+                  <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
                 </li>
               </ul>
               <div class="navbar-nav">
@@ -57,8 +60,8 @@
             </div>
           </nav>
       </header>
-      <br>
-       <div class="col-md-12">
+      {% comment %} <br> {% endcomment %}
+       <div class="col-md-12" style="padding-top: 20px">
 	      {% if messages %}
 	      	{% for message in messages %}
           <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
@@ -69,7 +72,7 @@
         </div>
 	      	{% endfor %}
 	      {% endif %}
-	      {% block content %}{% endblock %}
+	      {% block content %}{% endblock content %}
 	    </div>
 
 
@@ -85,14 +88,16 @@
 
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
      <script>
     
     {% block js %}
     {% endblock js %}
     
     </script>
-    <div class="footer d-flex align-items-center justify-content-center fixed-bottom pt-2" style="background-color: #092230">
-      <p class="text-center" style="color: white;">GharBulao © 2021. All Rights Reserved</p>
+    <div class="footer pt-1 fixed-bottom" style="background-color: #092230">
+      <h6 class="text-center" style="color: white;">GharBulao © 2021. All Rights Reserved</h6>
     </div>
   </body>
 </html>
